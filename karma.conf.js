@@ -18,12 +18,39 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {},
+    preprocessors: {
+      // 匹配源文件，并使用 webpack 进行预处理
+      'src/**/*.js': ['webpack'],
+      // 匹配测试文件，并使用 webpack 进行预处理
+      'test/**/*.js': ['webpack']
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress'],
+
+    webpack: {
+      mode: 'development',
+      module: {
+        rules: [
+          {
+            // 匹配 JavaScript 文件
+            test: /\.js$/,
+            // 排除 node_modules 和 bower_components 目录
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              // 使用的 loader
+              loader: 'babel-loader',
+              // 传递给 babel-loader 的参数
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
+          }
+        ]
+      }
+    },
 
     // web server port
     port: 9876,
