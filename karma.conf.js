@@ -55,7 +55,8 @@ module.exports = function(config) {
               loader: 'babel-loader',
               // 传递给 babel-loader 的参数
               options: {
-                presets: ['@babel/preset-env']
+                presets: ['@babel/preset-env'],
+                plugins: ['istanbul']
               }
             }
           }
