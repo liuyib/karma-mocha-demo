@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "karma start ./karma.conf.js"
+    "test": "karma start ./karma.conf.js",
+    "codecov": "./node_modules/.bin/codecov"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.2.0",
+    "codecov": "^3.6.5",
     "karma": "^4.4.1",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
