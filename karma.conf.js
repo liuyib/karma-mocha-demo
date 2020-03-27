@@ -20,7 +20,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       // 匹配源文件，并使用 webpack 进行预处理
-      'src/**/*.js': ['webpack'],
+      'src/**/*.js': ['webpack', 'coverage'],
       // 匹配测试文件，并使用 webpack 进行预处理
       'test/**/*.js': ['webpack']
     },
@@ -28,7 +28,18 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec'],
+    reporters: ['spec', 'coverage'],
+
+    coverageReporter: {
+      // 生成报告的目录
+      dir: 'coverage/',
+      // 要生成的报告类型
+      reporters: [
+        { type: 'lcov', subdir: '.' },
+        { type: 'text', subdir: '.', file: 'text.txt' },
+        { type: 'text-summary', subdir: '.', file: 'text-summary.txt' }
+      ]
+    },
 
     webpack: {
       mode: 'development',
